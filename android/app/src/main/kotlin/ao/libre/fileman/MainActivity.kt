@@ -1,4 +1,4 @@
-package ao.libre.livre
+package ao.libre.fileman
 
 import io.flutter.embedding.android.FlutterActivity
 

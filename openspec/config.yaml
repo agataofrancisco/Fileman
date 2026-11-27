@@ -1,0 +1,81 @@
+schema: spec-driven
+version: "1.0.0"
+context: |
+  Projeto LIVRE: app Android-first em Flutter + Kotlin nativo, SQLite/Drift,
+  Riverpod, OCR local (ML Kit) e classificação opcional com Jev/TypeSafe.
+  pt-AO na UI e documentação. A IA classifica; o utilizador decide.
+  Sem root, sem acesso a dados privados de outras apps, sem exclusão
+  automática de ficheiros pessoais. Online AI é opt-in e experimental.
+  Implementação incremental, testes e validação de políticas Google Play.
+  Backend gateway em Go (substitui Cloudflare Workers do prompt mestre).
+
+project:
+  name: "LIVRE"
+  application_id: "ao.libre.fileman"
+  language_ui: "pt-AO"
+  min_sdk: 24
+  target_sdk: 36
+  compile_sdk: 36
+  kotlin_version: "1.9.20"
+  flutter_version: "3.47.9"
+
+rules:
+  proposal:
+    - Explicitar objetivos, não objetivos, dependências, riscos e rollback.
+    - Identificar provas de viabilidade Android antes de prometer funcionalidades.
+  specs:
+    - Usar cenários Given/When/Then com resultados observáveis.
+    - Incluir estados de permissão, offline, erro, parcial e cancelamento.
+    - Nenhuma eliminação sem seleção/autorização explícita do utilizador.
+  design:
+    - Documentar fluxo de dados Flutter-Kotlin, gateway Jev em Go e persistência.
+    - Explicar APIs Android por versão e estratégia de fallback.
+    - Incluir segurança, privacidade, desempenho e diagramas de sequência.
+  tasks:
+    - Dividir em tarefas pequenas e testáveis com dependências.
+    - Marcar done apenas após evidência de implementação/teste.
+
+stack:
+  frontend: "Flutter/Dart 3.13.7"
+  native: "Kotlin Android"
+  persistence: "Drift/SQLite"
+  state: "Riverpod"
+  navigation: "go_router"
+  ocr: "ML Kit Text Recognition (local)"
+  hashing: "SHA-256 local"
+  backend: "Go (Jev/TypeSafe gateway)"
+  ai_vendor: "Jev/TypeSafe (único fornecedor comercial inicial, opt-in, beta)"
+
+capabilities_to_verify:
+  - MediaStore listagem e metadados (API 34/35/36)
+  - MediaStore.createTrashRequest
+  - SAF ACTION_OPEN_DOCUMENT_TREE
+  - StorageStatsManager / PACKAGE_USAGE_STATS
+  - StorageManager.ACTION_CLEAR_APP_CACHE
+  - WhatsApp media acessível (candidato, não garantido)
+  - Chrome storage settings intent
+
+changes:
+  - id: "00-foundation-openspec-architecture"
+    status: "done"
+  - id: "01-android-storage-feasibility-poc"
+    status: "pending"
+    gate: "device_validation_required"
+  - id: "02-permissions-and-index"
+    status: "pending"
+  - id: "03-dashboard-and-explorer"
+    status: "pending"
+  - id: "04-duplicates-and-large-files"
+    status: "pending"
+  - id: "05-whatsapp-media-manager"
+    status: "pending"
+  - id: "06-app-storage-and-cache"
+    status: "pending"
+  - id: "07-cleanup-selection-and-reporting"
+    status: "pending"
+  - id: "08-local-ocr-and-document-taxonomy"
+    status: "pending"
+  - id: "09-jev-beta-gateway-classifier"
+    status: "pending"
+  - id: "10-hardening-accessibility-play-release"
+    status: "pending"

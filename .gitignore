@@ -1,0 +1,39 @@
+# Flutter/Dart
+.dart_tool/
+.build/
+*.lock
+pubspec.lock
+.android/
+.idea/
+*.iml
+*.keystore
+.jks
+
+# Build outputs
+build/
+android/app/build/
+android/app/intermediates/
+
+# Android
+local.properties
+*.key
+*.pub
+
+# Environment / secrets
+.env
+.env.local
+*.secret
+secrets.json
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Go backend
+vendor/
+backend/jev-gateway/bin/
